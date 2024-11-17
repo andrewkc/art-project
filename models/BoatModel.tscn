@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://fonmn3tga8v7"]
+
+[ext_resource type="PackedScene" uid="uid://cddku31ke010a" path="res://models/boat.dae" id="1"]
+
+[sub_resource type="Skin" id="Skin_rgch2"]
+
+[node name="boat" instance=ExtResource("1")]
+
+[node name="Cube" parent="." index="0"]
+skin = SubResource("Skin_rgch2")
