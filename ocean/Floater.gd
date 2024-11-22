@@ -2,7 +2,7 @@ extends Node3D
 class_name Floater
 
 var depth_before_submerged = 1.0
-@onready var ocean = get_node("/root/Ocean")
+@onready var ocean = get_node("/root/ocean")
 
 var last_position = Vector3()
 
@@ -21,7 +21,7 @@ func _ready():
 		if c.get_script() == get_script():
 			floater_count += 1
 
-func get_position():
+func get_floater_position():
 	return get_global_transform().origin
 
 func _physics_process(delta):
@@ -30,14 +30,14 @@ func _physics_process(delta):
 	
 	# It had to be a world coord offset.... not just relative to the parent...
 	# reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-	var world_coord_offset = get_position() - get_parent().position
+	var world_coord_offset = get_floater_position() - get_parent().position
 	
 	# Gravity
 	get_parent().apply_force(world_coord_offset, Vector3.DOWN * 9.8)
 	
-	var wave = ocean.get_wave(get_position().x, get_position().z)
+	var wave = ocean.get_wave(get_floater_position().x, get_floater_position().z)
 	var wave_height = wave.y / 2.0
-	var height = get_position().y
+	var height = get_floater_position().y
 	
 	if height < wave_height:
 		var buoyancy = clamp((wave_height - height) / depth_before_submerged, 0, 1) * 2
