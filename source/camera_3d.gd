@@ -28,3 +28,11 @@ func _input(event):
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		# Solo rotar en el eje Y (izquierda/derecha)
 		rotate_y(deg_to_rad(-event.relative.x * look_speed))
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	pass # Replace with function body.
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	pass # Replace with function body.
